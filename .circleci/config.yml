@@ -32,8 +32,11 @@ jobs:
           name: Accept licenses
           command: sudo yes | sdkmanager --licenses
       - run:
+          name: download emulator packages
+          command: sdkmanager "system-images;android-28;default;x86"
+      - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-28;default;x86" && avdmanager create avd -n test -k "system-images;android-28;default;x86"
+          command: echo no | avdmanager create avd -n test -k "system-images;android-28;default;x86"
       - run:
           name: Launch emulator
           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
