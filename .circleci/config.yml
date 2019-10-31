@@ -13,13 +13,13 @@ jobs:
       #      - run:
       #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
       #         command: sudo chmod +x ./gradlew
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#      - run:
+#          name: Download Dependencies
+#          command: ./gradlew androidDependencies
+#      - save_cache:
+#          paths:
+#            - ~/.gradle
+#          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #          name: Run Tests
 #          command: ./gradlew lint testDebugUnitTest
@@ -30,7 +30,7 @@ jobs:
 #          path: app/build/test-results
       - run:
           name: Accept licenses
-          command: sudo yes | sdkmanager --licenses
+          command: sudo yes | sdkmanager --licenses | sdkmanager --list
       - run:
           name: Setup emulator
           command: sdkmanager "system-images;android-16;default;armeabi-v7a" | avdmanager create avd -n test -k "system-images;android-16;default;armeabi-v7a"
