@@ -20,17 +20,20 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#      - run:
+#          name: Run Tests
+#          command: ./gradlew lint testDebugUnitTest
+#      - store_artifacts:
+#          path: app/build/reports
+#          destination: reports
+#      - store_test_results:
+#          path: app/build/test-results
       - run:
-          name: Run Tests
-          command: ./gradlew lint testDebugUnitTest
-      - store_artifacts:
-          path: app/build/reports
-          destination: reports
-      - store_test_results:
-          path: app/build/test-results
+          name: Accept licenses
+          command: yes | sdkmanager --licenses
       - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-16;default;armeabi-v7a" && echo "yes" | avdmanager create avd -n test -k "system-images;android-16;default;armeabi-v7a"
+          command: sdkmanager "system-images;android-16;default;armeabi-v7a" | avdmanager create avd -n test -k "system-images;android-16;default;armeabi-v7a"
       - run:
           name: Launch emulator
           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel auto -verbose
