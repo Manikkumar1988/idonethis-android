@@ -77,11 +77,14 @@ dependencies {
     implementation 'org.koin:koin-androidx-scope:2.0.1'
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
 
-    kapt "com.android.databinding:compiler:3.1.2"
+    kapt "com.android.databinding:compiler:3.1.4"
 
 
     //Robolectric
     testImplementation "org.robolectric:robolectric:4.3"
+
+    testImplementation "io.mockk:mockk:1.9.3"
+
 
     // Android test runner and rules
     androidTestImplementation "androidx.test:runner:1.2.0" 
@@ -113,4 +116,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'recyclerview-v7'
     }
+
+    debugImplementation 'androidx.fragment:fragment-testing:1.2.0-rc01'
+
 }

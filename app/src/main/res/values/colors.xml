@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorBlack">#000000</color>
+    <color name="stroke">#F0F2F5</color>
+    <color name="primaryTextColor">#28292C</color>
+    <color name="lightLabelColor">#7F8389</color>
+    <color name="appBackground">#F0F2F5</color>
+    <color name="label">#7F8389</color>
+    <color name="dividerColor">#FAFCFF</color>
+    <color name="error">#AA34</color>
 </resources>
