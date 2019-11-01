@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.mani.idonethis.ui.gallery.GalleryViewModel
+import com.mani.idonethis.ui.home.HomeViewModel
 import com.mani.idonethis.ui.login.LoginViewModel
 import com.mani.idonethis.ui.login.repository.UserApiService
 import com.mani.idonethis.ui.login.repository.UserRepository
@@ -16,6 +17,7 @@ class AppInjector {
     val viewModelModule = module {
         viewModel { GalleryViewModel() }
         viewModel { LoginViewModel(get(), get()) }
+        viewModel { HomeViewModel() }
     }
 
     val repositoryModule = module {
