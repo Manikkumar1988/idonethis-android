@@ -97,6 +97,13 @@ dependencies {
     //Mockk
     testImplementation "io.mockk:mockk:1.9.3"
 
+    //coroutine test
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.2"
+
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.2"
+
+
     // Android test runner and rules
     androidTestImplementation "androidx.test:runner:1.2.0" 
     androidTestImplementation "androidx.test:core:1.2.0" 
