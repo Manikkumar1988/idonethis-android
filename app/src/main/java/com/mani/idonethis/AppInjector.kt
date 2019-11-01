@@ -20,7 +20,7 @@ class AppInjector {
 
     val repositoryModule = module {
         single { UserRepository(get()) }
-        single { getSharedPreferences(androidApplication()) }
+        single { UserSharedPreference(getSharedPreferences(androidApplication())) }
 
     }
 
