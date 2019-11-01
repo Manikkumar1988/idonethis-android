@@ -48,6 +48,8 @@ class LoginViewModel(private val userRepository: UserRepository,
                     userResponseObject?.let {
                         userSharedPreference.addUser(it.uid)
                     }
+                } else {
+                    userMutableLiveData.value = User("", "", "-1")
                 }
 
                 _loginButtonStatus.value =

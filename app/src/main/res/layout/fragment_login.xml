@@ -62,7 +62,7 @@
                 android:id="@+id/textInputEditTextUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="username hint"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:text="@={viewmodel.userName}"
                 android:textAppearance="@style/primaryText" />
@@ -86,10 +86,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUserName">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password"
+                android:id="@+id/textInputEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint"
+                android:hint="Password"
                 android:inputType="text"
                 android:maxLength="10"
                 android:text="@={viewmodel.password}"
