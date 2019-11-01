@@ -11,8 +11,13 @@ class AppApplication  : Application() {
         startKoin {
             // declare used Android context
             androidContext(this@AppApplication)
+
             // declare modules
-            modules(AppInjector().viewModelModule)
+            val appInjector = AppInjector()
+
+            modules(arrayListOf(appInjector.viewModelModule,
+                appInjector.repositoryModule,
+                appInjector.apiServiceModule))
         }
     }
 }

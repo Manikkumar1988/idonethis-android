@@ -1,15 +1,21 @@
 package com.mani.idonethis.ui.login
 
 import androidx.lifecycle.*
-import com.mani.idonethis.extensions.isValidUserName
+import com.mani.idonethis.UserSharedPreference
 import com.mani.idonethis.extensions.isValidPassword
+import com.mani.idonethis.extensions.isValidUserName
+import com.mani.idonethis.ui.login.model.User
+import com.mani.idonethis.ui.login.repository.UserRepository
 import kotlinx.coroutines.launch
 
 enum class LoginButtonStatus { ENABLED, IN_PROGRESS }
 
-class LoginViewModel : ViewModel(), LifecycleObserver {
+class LoginViewModel(private val userRepository: UserRepository,
+                     val userSharedPreference: UserSharedPreference) : ViewModel(), LifecycleObserver {
     val userName = MutableLiveData("")
     val password = MutableLiveData("")
+
+    val userMutableLiveData = MutableLiveData<User>()
 
     private val _isValidUserName = MutableLiveData<Boolean>()
     private val _isValidPassword = MutableLiveData<Boolean>()
@@ -33,8 +39,21 @@ class LoginViewModel : ViewModel(), LifecycleObserver {
                 LoginButtonStatus.IN_PROGRESS
 
             viewModelScope.launch {
+                val user = userRepository.login(userName.value!!,password.value!!)
 
+                if(user.isSuccessful) {
+                    val userResponseObject = user.body()
+
+                    userMutableLiveData.value = userResponseObject
+                    userResponseObject?.let {
+                        userSharedPreference.addUser(it.uid)
+                    }
+                }
+
+                _loginButtonStatus.value =
+                    LoginButtonStatus.ENABLED
             }
+
         }
     }
 }
