@@ -63,8 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="username hint"
-                android:inputType="number"
-                android:maxLength="13"
+                android:inputType="textEmailAddress"
                 android:text="@={viewmodel.userName}"
                 android:textAppearance="@style/primaryText" />
 
@@ -91,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="hint"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLength="10"
                 android:text="@={viewmodel.password}"
                 android:textAppearance="@style/primaryText" />
