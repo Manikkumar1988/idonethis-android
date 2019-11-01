@@ -149,7 +149,7 @@ class LoginViewModelTest {
 
         loginViewModel.login()
 
-        assertNull(LiveDataTestUtil.getValue(loginViewModel.userMutableLiveData))
+        assertEquals(User("", "", "-1"), LiveDataTestUtil.getValue(loginViewModel.userMutableLiveData))
         coVerify { userRepository.login(validUserName, validPassword) }
         assertEquals(
             LoginButtonStatus.ENABLED,
@@ -184,5 +184,18 @@ class LoginViewModelTest {
         coVerify { userRepository.login(validUserName, validPassword) }
     }
 
+    @Test
+    fun `should return true for if user has signed in`() {
+        every { userSharedPreference.hasUserOnBoard() } returns true
+
+        assertTrue(loginViewModel.hasUserOnBoarded())
+    }
+
+    @Test
+    fun `should return false for if user has not signed in`() {
+        every { userSharedPreference.hasUserOnBoard() } returns false
+
+        assertFalse(loginViewModel.hasUserOnBoarded())
+    }
 
 }
