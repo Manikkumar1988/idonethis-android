@@ -16,8 +16,8 @@ class UserSharedPreference(private val sharedPreferences: SharedPreferences) {
             .apply()
     }
 
-    fun getUserId(): String? {
-        return sharedPreferences.getString(USER_ID_KEY, null)
+    fun getUserId(): String {
+        return sharedPreferences.getString(USER_ID_KEY, "")
     }
 
     fun removeUser() {

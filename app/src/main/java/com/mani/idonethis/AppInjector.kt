@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.mani.idonethis.ui.gallery.GalleryViewModel
 import com.mani.idonethis.ui.home.HomeViewModel
+import com.mani.idonethis.ui.home.repository.ToDoRepository
+import com.mani.idonethis.ui.home.repository.ToDoService
 import com.mani.idonethis.ui.login.LoginViewModel
 import com.mani.idonethis.ui.login.repository.UserApiService
 import com.mani.idonethis.ui.login.repository.UserRepository
@@ -17,11 +19,12 @@ class AppInjector {
     val viewModelModule = module {
         viewModel { GalleryViewModel() }
         viewModel { LoginViewModel(get(), get()) }
-        viewModel { HomeViewModel() }
+        viewModel { HomeViewModel(get(), get()) }
     }
 
     val repositoryModule = module {
         single { UserRepository(get()) }
+        single { ToDoRepository(get()) }
         single { UserSharedPreference(getSharedPreferences(androidApplication())) }
 
     }
@@ -29,6 +32,7 @@ class AppInjector {
     val apiServiceModule = module {
         single { RetrofitClient.provideRetrofit("https://idonethis-backend.herokuapp.com") }
         single { RetrofitClient.provideApiService(get(), UserApiService::class.java) }
+        single { RetrofitClient.provideApiService(get(), ToDoService::class.java) }
     }
 
     private fun getSharedPreferences(androidApplication: Application): SharedPreferences {
