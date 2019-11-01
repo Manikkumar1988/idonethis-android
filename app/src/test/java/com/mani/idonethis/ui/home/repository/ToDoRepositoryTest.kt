@@ -3,6 +3,7 @@ package com.mani.idonethis.ui.home.repository
 import com.mani.idonethis.ui.home.model.DoneItem
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import junit.framework.TestCase
 import kotlinx.coroutines.runBlocking
@@ -37,5 +38,7 @@ class ToDoRepositoryTest {
             val result = userRepository.addTodo(uId, doneItem)
             TestCase.assertEquals(doneItem, result.body())
         }
+
+        coVerify { toDoService.addToDo(uId, doneItem) }
     }
 }

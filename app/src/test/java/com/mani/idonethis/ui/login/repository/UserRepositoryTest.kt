@@ -40,5 +40,10 @@ class UserRepositoryTest {
             val result = userRepository.login(userName, password)
             TestCase.assertEquals(user, result.body())
         }
+
+        coEvery {userApiService.login( hashMapOf(
+            "userId" to userName,
+            "password" to password
+        ))}
     }
 }
