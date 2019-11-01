@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.mani.idonethis.ui.gallery.GalleryFragment"
+        android:name="com.mani.idonethis.ui.team.TeamFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
@@ -24,7 +24,6 @@
         tools:layout="@layout/fragment_slideshow" />
 
 
-
     <fragment
         android:id="@+id/nav_send"
         android:name="com.mani.idonethis.ui.login.LoginFragment"
@@ -32,6 +31,8 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_nav_send_to_nav_home"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_home"
+            app:popUpTo="@+id/mobile_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

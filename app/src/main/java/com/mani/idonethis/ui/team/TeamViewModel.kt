@@ -1,7 +1,6 @@
 package com.mani.idonethis.ui.team
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +16,7 @@ class TeamViewModel(val teamRepository: TeamRepository) : ViewModel() {
         val team = Team(mailID,"1")
         viewModelScope.launch {
             teamRepository.addToTeam(team)
+            getTeam()
         }
     }
 
