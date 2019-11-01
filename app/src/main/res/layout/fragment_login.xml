@@ -10,7 +10,7 @@
             type="com.mani.idonethis.ui.login.LoginViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,12 +21,10 @@
             android:layout_marginStart="@dimen/dimen40"
             android:layout_marginTop="@dimen/dimen44"
             android:layout_marginEnd="@dimen/dimen40"
-            android:text="I DONE THIS"
+            android:text="Login"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/fontSize24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_centerHorizontal="true"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/pagetitle"
@@ -35,7 +33,7 @@
             android:layout_marginStart="@dimen/dimen40"
             android:layout_marginEnd="@dimen/dimen40"
             android:gravity="center"
-            android:text="Login"
+            android:text="Standup Over Mail"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/fontSize16"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +52,7 @@
             app:errorEnabled="true"
             app:errorTextAppearance="@style/onError"
             app:hintTextAppearance="@style/label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pagetitle">
+            android:layout_centerInParent="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditTextUserName"
@@ -72,6 +68,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutPassword"
+            android:layout_below="@+id/textInputLayoutUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen24"
@@ -98,11 +95,13 @@
 
 
         <com.google.android.material.button.MaterialButton
+            android:layout_below="@+id/textInputLayoutPassword"
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/dimen24"
             android:layout_marginEnd="@dimen/dimen24"
+            android:gravity="center"
             android:onClick="@{() -> viewmodel.login()}"
             android:textAppearance="@style/primaryText"
             android:textColor="@color/primaryTextColor"
@@ -113,5 +112,5 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>
